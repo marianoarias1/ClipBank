@@ -22,6 +22,7 @@ class UserAcc{
 
     showAccMovements(){
         alert(`${this.name} estos son los movimientos de tu cuenta \n${this.movements}`)
+
     }
 
     showAccBalance(){
@@ -45,11 +46,11 @@ while(doTransaction){
 
     const accMovements= prompt("Desea ver el historial de transacciones? si/no")
     if(accMovements==="si"){
-        alert(createUser.showAccMovements())
+        createUser.showAccMovements()
     }
     const response= prompt("Desea realizar otra acción? si/no")
     if(response==="no"){
-        alert(createUser.showAccBalance())
+        createUser.showAccBalance()
         doTransaction = false
     }
 }
