@@ -1,0 +1,8 @@
+//Mixins
+
+@mixin texts($size,$color,$weight){
+    font-size: $size;
+    color: $color;
+    font-weight: $weight;
+    font-family: $mainFont; //variable global
+}

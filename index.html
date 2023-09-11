@@ -1,43 +1,122 @@
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="./src/styles/main.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
     <title>ClipBank</title>
 </head>
 <body>
+  <!-- Start Nav -->
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">Navbar</a>
+          <a class="navbar-brand" href="#">ClipBank</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
-              <a class="nav-link" href="#">Features</a>
-              <a class="nav-link" href="#">Pricing</a>
-              <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+              <a class="nav-link" href="#">Contáctanos</a>
+              <a class="nav-link" href="#">Mi cuenta</a>
+              <a class="nav-link" href="#">Nosotros</a>
             </div>
           </div>
         </div>
-      </nav>
+    </nav>
+  <!-- Ends Nav -->
 
+  <!-- Start Header -->
+    <section class="carousel-container">
       <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img src="https://d2vykwbochoala.cloudfront.net/t_smart_auto_crop/https://d1sdeqoxcfgxl0.cloudfront.net/images/original/399291a93f0ab0f061da05bee337a9885e336dd3319729a20e8c8311.jpg" class="d-block w-100" alt="...">
+          <div class="carousel-item active" data-bs-interval="2000">
+            <div class="container-item">
+                <div class="text-container">
+                  <p>Tu banco digital <span>de confianza.</span></p>
+                </div>
+                <div class="image-container">
+                  <img src="./src/assets/HeaderIMG/header_IMG_1.jpg" class="d-block w-100" alt="Imagen animada de mujer sosteniendo una tarjeta de credito">
+                </div>
+            </div>
           </div>
-          <div class="carousel-item">
-            <img src="https://cdn.motor1.com/images/mgl/JO9XLg/s1/_2075_saturn_bkos6258_v02.webp" class="d-block w-100" alt="...">
+          <div class="carousel-item" data-bs-interval="2000">
+            <div class="container-item">
+              <div class="text-container">
+                <p>Solicitá tu tarjeta de débito <span>contactless</span> y pagá sin tener que pasar tu tarjeta.</p>
+              </div>
+              <div class="image-container">
+                <img src="./src/assets/HeaderIMG/header_IMG_2.jpg" class="d-block w-100" alt="Imagen animada de mujer con una tarjeta de credito contactless">
+              </div>
           </div>
-          <div class="carousel-item">
-            <img src="https://cdn.motor1.com/images/mgl/qp4ZZ/s3/porsche-panamera-vs-porsche-taycan.jpg" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item" data-bs-interval="2000">
+            <div class="container-item">
+              <div class="text-container">
+                <p>Disfrutá de tus compras, con ClipBank tenés <span>reintegro de dinero</span> en comercios adheridos.</p>
+              </div>
+              <div class="image-container">
+                <img src="./src/assets/HeaderIMG/header_IMG_3.jpg" class= "d-block w-100" alt="Imagen animada de tarjetas de credito y monedas">
+              </div>
+          </div>
           </div>
         </div>
       </div>
+    </section>
+  <!-- Ends Header -->
 
-    <script src="./index.js"></script>
+  <!-- Start Main -->
+    <main class="user-acc-container">
+      <div class="register" id="register">
+        <h1>
+          Registrese para continuar
+        </h1>
+        <form class="user-data-container" id="formRegister">
+          <input type="text" id="name" placeholder="Nombre">
+          <input type="text" id="surname" placeholder="Apellido">
+          <input type="email" id="email"placeholder="Email">
+          <input type="password" id="password" placeholder="Contraseña">
+          <button type="submit" id="btnUser">Ingresar</button>
+        </form>
+      </div>
+      <div class="card-user" id="cardUser">
+        <div class="title-container-user" id="titleContainer">
+
+        </div>
+        <div class="user-container">
+          <div class="data-user-acc">
+            <h2>
+              Por favor, Ingresa el monto en el campo de la acción que deseas realizar
+            </h2>
+            <div class="input-container">
+              <input type="number" id="depositar" placeholder="Ingreso">
+              <button class="button-acc" value="depositar">Realizar</button>
+            </div>
+            <div class="input-container">
+              <input type="number" id="transferir" placeholder="Transferencia">
+              <button class="button-acc" value="transferir">Realizar</button>
+            </div>
+            <div class="input-container">
+              <input type="number" id="retirar" class="input-user-action" placeholder="Retiro">
+              <button class="button-acc" value="retiro">Realizar</button>
+            </div>
+          </div>
+
+          <div class="user-balance" id="userBalance">
+            <div id="userBalanceContainer">
+
+            </div>
+
+            <div class="user-record" id="userRecord">
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  <!-- Ends Main -->
+
+<script src="./index.js"></script>
 </body>
 </html>

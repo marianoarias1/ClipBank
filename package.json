@@ -6,6 +6,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "sass": "sass",
-    "sass:watch": "sass --watch scss/styles.scss  styles/main.css"
+    "sass:watch": "sass --watch src/scss/styles.scss  src/styles/main.css"
   }
 }

@@ -1,0 +1,216 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  font-size: "Raleway", sans-serif;
+}
+
+.carousel-container .carousel .carousel-inner .carousel-item .container-item {
+  display: flex;
+  width: 100%;
+  height: 80%;
+  flex-direction: row;
+}
+.carousel-container .carousel .carousel-inner .carousel-item .container-item .text-container {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.carousel-container .carousel .carousel-inner .carousel-item .container-item .text-container p {
+  font-size: 3rem;
+  color: #000000;
+  font-weight: 500;
+  font-family: "Raleway", sans-serif;
+  width: 70%;
+  text-align: center;
+}
+.carousel-container .carousel .carousel-inner .carousel-item .container-item .text-container p span {
+  font-size: 3rem;
+  color: #a06cd5;
+  font-weight: 600;
+  font-family: "Raleway", sans-serif;
+}
+.carousel-container .carousel .carousel-inner .carousel-item .container-item .image-container {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.carousel-container .carousel .carousel-inner .carousel-item .container-item .image-container img {
+  object-fit: contain;
+}
+
+.user-acc-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+  margin-top: 50px;
+}
+.user-acc-container .register {
+  width: 90%;
+  height: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 15px;
+  box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.75);
+  background-color: #47337f;
+}
+.user-acc-container .register h1 {
+  font-size: 2.5rem;
+  color: #fefefe;
+  font-weight: 400;
+  font-family: "Raleway", sans-serif;
+}
+.user-acc-container .register .user-data-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.user-acc-container .register .user-data-container input {
+  margin: 10px;
+  width: 200px;
+  height: 30px;
+  border: none;
+  border-radius: 20px;
+  text-align: center;
+  font-family: "Raleway", sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+}
+.user-acc-container .register .user-data-container button {
+  width: 150px;
+  height: 30px;
+  border: none;
+  background-color: #a06cd5;
+  text-align: center;
+  color: #fefefe;
+  border-radius: 20px;
+  transition: all 0.3s ease-in-out;
+}
+.user-acc-container .register .user-data-container button:hover {
+  color: #a06cd5;
+  background-color: #e2cfea;
+  box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.75);
+}
+.user-acc-container .card-user {
+  width: 90%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 15px;
+  box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.75);
+  background-color: #47337f;
+}
+.user-acc-container .card-user .title-container-user h2 {
+  font-size: 2.5rem;
+  color: #fefefe;
+  font-weight: 400;
+  font-family: "Raleway", sans-serif;
+}
+.user-acc-container .card-user .title-container-user h2 span {
+  font-size: 2.5rem;
+  color: #fefefe;
+  font-weight: 400;
+  font-family: "Raleway", sans-serif;
+}
+.user-acc-container .card-user .user-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.user-acc-container .card-user .user-container .data-user-acc {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.user-acc-container .card-user .user-container .data-user-acc h2 {
+  font-size: "";
+  color: #fefefe;
+  font-weight: 400;
+  font-family: "Raleway", sans-serif;
+  font-size: 1.4rem;
+  text-align: center;
+  width: 70%;
+}
+.user-acc-container .card-user .user-container .data-user-acc .input-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.user-acc-container .card-user .user-container .data-user-acc .input-container input {
+  margin: 20px;
+  width: 250px;
+  height: 30px;
+  border: none;
+  border-radius: 20px;
+  text-align: center;
+  font-family: "Raleway", sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+}
+.user-acc-container .card-user .user-container .data-user-acc .input-container button {
+  width: 150px;
+  height: 30px;
+  border: none;
+  background-color: #a06cd5;
+  text-align: center;
+  color: #fefefe;
+  border-radius: 20px;
+  transition: all 0.3s ease-in-out;
+}
+.user-acc-container .card-user .user-container .data-user-acc .input-container button:hover {
+  color: #a06cd5;
+  background-color: #e2cfea;
+  box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.75);
+}
+.user-acc-container .card-user .user-container .user-balance {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.user-acc-container .card-user .user-container .user-balance h3 {
+  font-size: 2.5rem;
+  color: #fefefe;
+  font-weight: 400;
+  font-family: "Raleway", sans-serif;
+}
+.user-acc-container .card-user .user-container .user-balance .user-record {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  height: 200px;
+  overflow-y: scroll;
+  object-position: top;
+}
+.user-acc-container .card-user .user-container .user-balance .user-record::-webkit-scrollbar {
+  width: 5px;
+}
+.user-acc-container .card-user .user-container .user-balance .user-record::-webkit-scrollbar-thumb {
+  background-color: #e2cfea;
+  border-radius: 20px;
+}
+.user-acc-container .card-user .user-container .user-balance .user-record span {
+  text-align: center;
+  margin: 2px;
+  font-size: 1rem;
+  color: #e2cfea;
+  font-weight: 600;
+  font-family: "Raleway", sans-serif;
+}
+
+/*# sourceMappingURL=main.css.map */
