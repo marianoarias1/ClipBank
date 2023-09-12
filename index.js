@@ -14,7 +14,6 @@ const registerDiv= document.querySelector('#register')
 const users= JSON.parse(localStorage.getItem('users')) || []
 changeStyles()
 
-
 class UserAcc{
     constructor({username,userSurname,userEmail,userPassword}, userMovements=[], userAccBalance=0){
         this.username = username
@@ -24,33 +23,46 @@ class UserAcc{
         this.userMovements= userMovements
         this.userAccBalance= userAccBalance
     }
+}
 
-    AccOperations(transaction, amount){
-
-        switch(transaction){
-            case "depositar":
-                this.userAccBalance += amount
-                this.userMovements.push(`${transaction}: $${amount}`)
-                break
-            case "retiro":
-                this.userAccBalance += amount
-                this.userMovements.push(`${transaction}: $${amount}`)
-                break
-            case "transferir":
-                this.userAccBalance += amount
-                this.userMovements.push(`${transaction}: $${amount}`)
-                break
-            default:
-                break
-        }
+//creamos la funcion para poder agregar o quitar dinero de la cuenta y se actualiza el storage para que persista
+function AccOperations(transaction, amount){
+    switch(transaction){
+        case "depositar":
+            users[0].userAccBalance += amount
+            users[0].userMovements.push(`${transaction}: $${amount}`)
+            createSpan()
+            localStorage.setItem('users', JSON.stringify(users));
+            break
+        case "retiro":
+            if(amount > users[0].userAccBalance){
+                alert('Lo sentimos pero no dispones de esa cantidad en tu cuenta')
+            }
+            else{
+                
+                users[0].userAccBalance -= amount
+                users[0].userMovements.push(`${transaction}: $${amount}`)
+                createSpan()
+                localStorage.setItem('users', JSON.stringify(users));
+            }
+            break
+        case "transferir":
+            if(amount > users[0].userAccBalance){
+                alert('Lo sentimos pero no dispones de esa cantidad en tu cuenta')
+            }
+            else{
+                users[0].userAccBalance -= amount
+                users[0].userMovements.push(`${transaction}: $${amount}`)
+                createSpan()
+                localStorage.setItem('users', JSON.stringify(users));
+            }
+            break
+        default:
+            break
     }
 }
 
-// const username= users[0]?.username;
-// const userSurname=  users[0]?.userSurname;
-// const userEmail=  users[0]?.userEmail;
-// const userPassword=  users[0]?.userPassword;
-// const userCreated= new UserAcc({username, userSurname, userEmail, userPassword});
+//se guardan los datos del usuario al llenar el formulario de registro
 formRegister.onsubmit = e =>{
     e.preventDefault();
     const username= inputUser.value;
@@ -67,7 +79,7 @@ formRegister.onsubmit = e =>{
 //Recargamos pagina para que se ejecute la funcion changeStyles con el usuario ya creado
  btnUser.addEventListener('click', ()=>{
      location.reload();
- })
+})
 
 function saveUser(user){
     users.push(user);
@@ -102,7 +114,7 @@ function userAccBalanceCreation(){
     }
     if(users){
         const userBalanceh3= document.createElement('h3')
-        const userBalanceText= document.createTextNode(users[0].userAccBalance)
+        const userBalanceText= document.createTextNode(`$ ${users[0].userAccBalance}`)
         userBalanceh3.appendChild(userBalanceText)
 
         titleContainer.appendChild(userNameh2)
@@ -118,36 +130,42 @@ const inputDeposit= document.querySelector('#depositar')
 const inputTransfer= document.querySelector('#transferir')
 const inputRetirement= document.querySelector('#retirar')
 
-
-
 function catchUserAction(){
-    console.log(users)
-    console.log(users[0])
     for(let i = 0; i < btnUserTransaction.length; i++){
         btnUserTransaction[i].addEventListener("click",()=>{
             let transaction= btnUserTransaction[i].value
-            toString(transaction)
             switch(transaction){
                 case "depositar":
-                    users[0].AccOperations(transaction, parseFloat(inputDeposit.value));
-
-                    userAccBalanceCreation()
-                    createSpan()
-                    inputDeposit.value = ""
+                    if(!inputDeposit.value){
+                        alert('Por favor, intorduzca un monto')
+                    }
+                    else{
+                        AccOperations(transaction, parseFloat(inputDeposit.value));
+                        userAccBalanceCreation()
+                        inputDeposit.value = ""
+                    }
                     break
                 
                 case "transferir":
-                    users[0].AccOperations(transaction, parseFloat(inputTransfer.value));
-                    userAccBalanceCreation()
-                    createSpan()
-                    inputTransfer.value = ""
+                    if(!inputTransfer.value){
+                        alert('Por favor, intorduzca un monto')
+                    }
+                    else{
+                        AccOperations(transaction, parseFloat(inputTransfer.value));
+                        userAccBalanceCreation()
+                        inputTransfer.value = ""
+                    }
                     break
                 
                 case "retiro":
-                    users[0].AccOperations(transaction, parseFloat(inputRetirement.value));
-                    userAccBalanceCreation()
-                    createSpan()
-                    inputRetirement.value = ""
+                    if(!inputRetirement.value){
+                        alert('Por favor, intorduzca un monto')
+                    }
+                    else{
+                        AccOperations(transaction, parseFloat(inputRetirement.value));
+                        userAccBalanceCreation()
+                        inputRetirement.value = ""
+                    }
                     break
                 default:
                     return;
@@ -159,17 +177,18 @@ function catchUserAction(){
 catchUserAction()
 users.length > 0 ? userAccBalanceCreation() : null
 
-
 const userRecord= document.querySelector('#userRecord')
 
 function createSpan(){
-    userCreated.userMovements.map((element)=> {
-        console.log(element)
+    while(userRecord.firstChild){
+        userRecord.removeChild(userRecord.firstChild)
+    }
+    users[0].userMovements.map((element)=> {
         const userRecordSpan=document.createElement('span')
         const userRecordSpanText= document.createTextNode(element)
         userRecordSpan.appendChild(userRecordSpanText)
         userRecord.appendChild(userRecordSpan)
     })
-
 }
+users.length > 0 ? createSpan() : null
 
