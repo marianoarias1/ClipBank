@@ -1,5 +1,4 @@
 // Start Register
-
 const formRegister= document.querySelector("#formRegister")
 const inputUser= document.querySelector("#name")
 const inputSurname= document.querySelector("#surname")
@@ -9,6 +8,18 @@ const btnUser= document.querySelector('#btnUser')
 
 const cardUser= document.querySelector('#cardUser')
 const registerDiv= document.querySelector('#register')
+
+
+// Funcion para ejecutar Sweet Alert
+function showAlert(type, message){
+    Swal.fire({
+        icon: type,
+        title: 'Oops...',
+        text: message,
+        confirmButtonText: 'Ok'
+      })
+}
+
 
 //Verificamos si hay o no un usuario en el LocalStorage
 const users= JSON.parse(localStorage.getItem('users')) || []
@@ -25,34 +36,39 @@ class UserAcc{
     }
 }
 
+// Funcion para capitaliar los nombres de las transacciones
+function capitalize(word){
+    return word.charAt(0).toUpperCase() + word.substr(1).toLowerCase()
+}
+
 //creamos la funcion para poder agregar o quitar dinero de la cuenta y se actualiza el storage para que persista
 function AccOperations(transaction, amount){
     switch(transaction){
-        case "depositar":
+        case "deposito":
             users[0].userAccBalance += amount
-            users[0].userMovements.push(`${transaction}: $${amount}`)
+            users[0].userMovements.push(`${capitalize(transaction)}: $${amount}`)
             createSpan()
             localStorage.setItem('users', JSON.stringify(users));
             break
         case "retiro":
             if(amount > users[0].userAccBalance){
-                alert('Lo sentimos pero no dispones de esa cantidad en tu cuenta')
+                showAlert("warning",'Lo sentimos pero no dispones de esa cantidad en tu cuenta')
             }
             else{
                 
                 users[0].userAccBalance -= amount
-                users[0].userMovements.push(`${transaction}: $${amount}`)
+                users[0].userMovements.push(`${capitalize(transaction)}: $${amount}`)
                 createSpan()
                 localStorage.setItem('users', JSON.stringify(users));
             }
             break
-        case "transferir":
+        case "transferencia":
             if(amount > users[0].userAccBalance){
-                alert('Lo sentimos pero no dispones de esa cantidad en tu cuenta')
+                showAlert("warning",'Lo sentimos pero no dispones de esa cantidad en tu cuenta')
             }
             else{
                 users[0].userAccBalance -= amount
-                users[0].userMovements.push(`${transaction}: $${amount}`)
+                users[0].userMovements.push(`${capitalize(transaction)}: $${amount}`)
                 createSpan()
                 localStorage.setItem('users', JSON.stringify(users));
             }
@@ -135,9 +151,9 @@ function catchUserAction(){
         btnUserTransaction[i].addEventListener("click",()=>{
             let transaction= btnUserTransaction[i].value
             switch(transaction){
-                case "depositar":
+                case "deposito":
                     if(!inputDeposit.value){
-                        alert('Por favor, intorduzca un monto')
+                        showAlert("error",'Por favor, intorduzca un monto')
                     }
                     else{
                         AccOperations(transaction, parseFloat(inputDeposit.value));
@@ -146,9 +162,9 @@ function catchUserAction(){
                     }
                     break
                 
-                case "transferir":
+                case "transferencia":
                     if(!inputTransfer.value){
-                        alert('Por favor, intorduzca un monto')
+                        showAlert("error",'Por favor, intorduzca un monto')
                     }
                     else{
                         AccOperations(transaction, parseFloat(inputTransfer.value));
@@ -159,7 +175,7 @@ function catchUserAction(){
                 
                 case "retiro":
                     if(!inputRetirement.value){
-                        alert('Por favor, intorduzca un monto')
+                        showAlert("error",'Por favor, intorduzca un monto')
                     }
                     else{
                         AccOperations(transaction, parseFloat(inputRetirement.value));
@@ -192,3 +208,23 @@ function createSpan(){
 }
 users.length > 0 ? createSpan() : null
 
+// GIF && GIF Render
+const gifIframeContainer = document.querySelector('#gifIframeContainer')
+
+function requestingGIF(){
+    const URL = "./src/GIF/gif.js"
+
+    fetch(URL).then(res => res.json()).then(obj => {
+        const results = obj.result
+        createGIF(results[0].src)
+    })
+}
+
+function createGIF(src){
+    const iframe=document.createElement("iframe")
+    iframe.setAttribute("src", src)
+
+    gifIframeContainer.appendChild(iframe)
+}
+
+requestingGIF()
